@@ -1,0 +1,12 @@
+[
+  {"prompt": "fix the bug it doesn't work and make it better", "expectedRuleIds": ["vague-task"]},
+  {"prompt": "there is a bug in the app, something is wrong with it", "expectedRuleIds": ["bug-no-details"]},
+  {"prompt": "refactor the authentication module to use new patterns", "expectedRuleIds": ["no-file-reference"]},
+  {"prompt": "implement the new dashboard feature for the admin panel", "expectedRuleIds": ["no-verification"]},
+  {"prompt": "add the login form and then add validation and also add error handling and additionally add tests", "expectedRuleIds": ["compound-task"]},
+  {"prompt": "refactor the entire codebase to use new architecture patterns and restructure all modules to follow clean architecture", "expectedRuleIds": ["arch-no-plan"]},
+  {"prompt": "just build it, start coding the feature right now", "expectedRuleIds": ["code-before-spec"]},
+  {"prompt": "let's start the project and begin working on the new features", "expectedRuleIds": ["no-context-read"]},
+  {"prompt": "use this api_key: 'sk-abc123def456ghi789jkl012mno345pqr' for the integration", "expectedRuleIds": ["hardcoded-secret"]},
+  {"prompt": "rename all functions to use camelCase and change all variables to const", "expectedRuleIds": ["mass-edit-no-scope"]}
+]

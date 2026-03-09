@@ -1,0 +1,7 @@
+[
+  {"prompt": "fix the TypeError in src/auth.mjs:45 where validateToken throws on expired tokens. Run npm test -- auth to verify.", "expectedRuleIds": []},
+  {"prompt": "refactor src/utils/logger.mjs to extract formatMessage into a separate module. Run npm test.", "expectedRuleIds": []},
+  {"prompt": "skip: just do whatever", "expectedRuleIds": []},
+  {"prompt": "hi", "expectedRuleIds": []},
+  {"prompt": "arreglá el TypeError en src/auth.mjs:45 donde validateToken falla con tokens expirados. Verificá con npm test.", "expectedRuleIds": []}
+]

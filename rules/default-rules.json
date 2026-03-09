@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "vague-task",
+      "name": {
+        "en": "Vague Task",
+        "es": "Tarea Vaga"
+      },
+      "patterns_en": ["fix the bug", "make it work", "clean up", "update the code", "improve this"],
+      "patterns_es": ["arreglá el bug", "hacelo andar", "limpiá esto", "actualizá el código", "mejorá esto"],
+      "guard": { "minLength": 10, "maxLength": 150 },
+      "severity": "warning",
+      "suggestion": {
+        "en": "Specify: what file, what behavior, what error?",
+        "es": "Especificá: qué archivo, qué comportamiento, qué error?"
+      }
+    },
+    {
+      "id": "bug-no-details",
+      "name": {
+        "en": "Bug Without Details",
+        "es": "Bug Sin Detalles"
+      },
+      "patterns_en": ["there is a bug", "it's broken", "doesn't work", "something is wrong"],
+      "patterns_es": ["hay un bug", "está roto", "no funciona", "algo está mal"],
+      "guard": { "minLength": 10, "maxLength": 150 },
+      "severity": "warning",
+      "negation_en": ["error", "file:", "line", "stack", "TypeError", "ReferenceError", "at "],
+      "negation_es": ["error", "archivo", "línea", "stack"],
+      "suggestion": {
+        "en": "Include: error message, file:line, or stack trace",
+        "es": "Incluí: mensaje de error, archivo:línea, o stack trace"
+      }
+    },
+    {
+      "id": "no-file-reference",
+      "name": {
+        "en": "No File Reference",
+        "es": "Sin Referencia a Archivo"
+      },
+      "patterns_en": ["refactor", "modify", "change", "update", "add to", "remove from", "edit"],
+      "patterns_es": ["refactorizá", "modificá", "cambiá", "actualizá", "agregá a", "sacá de", "editá"],
+      "guard": { "minLength": 25, "maxLength": 200 },
+      "severity": "warning",
+      "negation_en": ["@", ".js", ".ts", ".mjs", ".py", ".md", ".json", ".yaml", ".yml", "src/", "lib/", "test"],
+      "negation_es": ["@", ".js", ".ts", ".mjs", ".py", ".md", ".json", ".yaml", ".yml", "src/", "lib/", "test"],
+      "suggestion": {
+        "en": "Add a file path or @file reference to scope the change",
+        "es": "Agregá un path o referencia @file para acotar el cambio"
+      }
+    },
+    {
+      "id": "no-verification",
+      "name": {
+        "en": "No Verification Criteria",
+        "es": "Sin Criterio de Verificación"
+      },
+      "patterns_en": ["implement", "add feature", "build", "create", "write"],
+      "patterns_es": ["implementá", "agregá feature", "construí", "creá", "escribí"],
+      "guard": { "minLength": 40 },
+      "severity": "warning",
+      "negation_en": ["test", "verify", "run", "check", "assert", "expect", "should"],
+      "negation_es": ["test", "verificá", "corré", "chequeá", "probá", "debería"],
+      "suggestion": {
+        "en": "Add how to verify: test command, expected output, or acceptance criteria",
+        "es": "Agregá cómo verificar: comando de test, output esperado, o criterio de aceptación"
+      }
+    },
+    {
+      "id": "compound-task",
+      "name": {
+        "en": "Compound Task",
+        "es": "Tarea Compuesta"
+      },
+      "patterns_en": ["and then", "and also", "additionally", "plus also", "while you're at it"],
+      "patterns_es": ["y después", "y también", "además", "aparte de eso", "de paso"],
+      "guard": { "minLength": 80 },
+      "severity": "warning",
+      "min_matches": 2,
+      "suggestion": {
+        "en": "Split into separate prompts — one task per prompt gets better results",
+        "es": "Dividí en prompts separados — una tarea por prompt da mejores resultados"
+      }
+    },
+    {
+      "id": "arch-no-plan",
+      "name": {
+        "en": "Architecture Without Plan",
+        "es": "Arquitectura Sin Plan"
+      },
+      "patterns_en": ["refactor", "migrate", "restructure", "rewrite", "redesign", "overhaul"],
+      "patterns_es": ["refactorizá", "migrá", "reestructurá", "reescribí", "rediseñá"],
+      "guard": { "minLength": 100 },
+      "severity": "warning",
+      "negation_en": ["plan", "design", "spec", "approach", "strategy"],
+      "negation_es": ["plan", "diseño", "spec", "approach", "estrategia"],
+      "suggestion": {
+        "en": "Use plan mode for architectural changes — brainstorm before implementing",
+        "es": "Usá plan mode para cambios arquitecturales — brainstorm antes de implementar"
+      }
+    },
+    {
+      "id": "code-before-spec",
+      "name": {
+        "en": "Code Before Spec",
+        "es": "Código Antes de Spec"
+      },
+      "patterns_en": ["write the code", "code it up", "just build it", "start coding"],
+      "patterns_es": ["escribí el código", "codealo", "arrancá a codear", "empezá a programar"],
+      "guard": { "minLength": 30 },
+      "severity": "block",
+      "negation_en": ["spec", "design", "plan", "requirement", "after review"],
+      "negation_es": ["spec", "diseño", "plan", "requerimiento", "después de revisar"],
+      "suggestion": {
+        "en": "USDAF: No code before spec. Create a design doc or spec first.",
+        "es": "USDAF: No se codea antes del spec. Creá un design doc o spec primero."
+      }
+    },
+    {
+      "id": "no-context-read",
+      "name": {
+        "en": "No Context Read",
+        "es": "Sin Lectura de Contexto"
+      },
+      "patterns_en": ["start the project", "begin working on", "let's start", "kick off"],
+      "patterns_es": ["empezá el proyecto", "arrancá a trabajar", "empecemos", "arranquemos"],
+      "guard": { "minLength": 20 },
+      "severity": "warning",
+      "negation_en": ["SESSION-CONTEXT", "CLAUDE.md", "context", "read first", "check"],
+      "negation_es": ["SESSION-CONTEXT", "CLAUDE.md", "contexto", "leé primero", "chequeá"],
+      "suggestion": {
+        "en": "Read SESSION-CONTEXT.md or CLAUDE.md first to pick up where you left off",
+        "es": "Leé SESSION-CONTEXT.md o CLAUDE.md primero para retomar donde quedaste"
+      }
+    },
+    {
+      "id": "hardcoded-secret",
+      "name": {
+        "en": "Hardcoded Secret",
+        "es": "Secreto Hardcodeado"
+      },
+      "patterns_en": [],
+      "patterns_es": [],
+      "regex": [
+        "(?:api[_-]?key|password|secret|token)\\s*[:=]\\s*['\"][^'\"]{8,}",
+        "sk-[a-zA-Z0-9]{20,}",
+        "ghp_[a-zA-Z0-9]{36}",
+        "AKIA[A-Z0-9]{16}"
+      ],
+      "guard": {},
+      "severity": "block",
+      "suggestion": {
+        "en": "Never include API keys, passwords, or tokens in prompts. Use env vars or vault.",
+        "es": "Nunca incluyas API keys, passwords, o tokens en prompts. Usá env vars o vault."
+      }
+    },
+    {
+      "id": "mass-edit-no-scope",
+      "name": {
+        "en": "Mass Edit Without Scope",
+        "es": "Edición Masiva Sin Alcance"
+      },
+      "patterns_en": ["change all", "replace everywhere", "update every", "rename all", "fix all"],
+      "patterns_es": ["cambiá todos", "reemplazá en todos", "actualizá cada", "renombrá todos", "arreglá todos"],
+      "guard": { "minLength": 40 },
+      "severity": "warning",
+      "negation_en": ["in src/", "in lib/", "in test", ".js", ".ts", ".py", "folder", "directory"],
+      "negation_es": ["en src/", "en lib/", "en test", ".js", ".ts", ".py", "carpeta", "directorio"],
+      "suggestion": {
+        "en": "Scope the change: which directory, file type, or module?",
+        "es": "Acotá el cambio: qué directorio, tipo de archivo, o módulo?"
+      }
+    }
+  ]
+}
