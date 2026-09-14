@@ -127,9 +127,9 @@ This idempotently registers both hooks in `~/.claude/settings.json`.
 ## Development
 
 ```bash
-npm install
-npm test          # 55 tests (unit + integration)
-npm run test:watch
+pnpm install --frozen-lockfile
+pnpm test          # 55 tests (unit + integration)
+pnpm run test:watch
 ```
 
 ### Project Structure
